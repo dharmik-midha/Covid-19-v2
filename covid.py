@@ -6,6 +6,7 @@ import plotly
 import folium
 import math
 import os
+import json
 import plotly.express as px
 import plotly.figure_factory as ff
 import plotly.graph_objs as go
@@ -559,17 +560,18 @@ def Help():
     '''
     st.markdown(thirdpara,unsafe_allow_html=True)
     ######################### Helpline Api #####################
-    url="https://raw.githubusercontent.com/dharmik-midha/frontend/master/index.json?token=GHSAT0AAAAAAB3NT44OXHEF3IM3RS7QBTUQY4KGHFA"
-    r=requests.get(url)
-    df=json_normalize(r.json())
+    f=open("helpline.json","r")
+    df=json.load(f)
+#    r=requests.get(url)
+    # df=json_normalize(r.json())
     # st.write(df.helpline_number[i])
     # st.write(df.state_or_UT[i]))
     
     def tr():
         tablerow=""
         for i in range(len(df)):
-                tr=""" <tr> <td>"""+df.state_or_UT[i]+"""</td>
-                        <td>"""+df.helpline_number[i]+"""</td>
+                tr=""" <tr> <td>"""+df[i]['state_or_UT']+"""</td>
+                        <td>"""+df[i]['helpline_number']+"""</td>
                         </tr>
                     """
                 tablerow=tablerow+tr
