@@ -12,7 +12,7 @@ import plotly.figure_factory as ff
 import plotly.graph_objs as go
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from pandas.io.json import json_normalize
+from pandas import json_normalize
 from streamlit_folium import folium_static
 
 
